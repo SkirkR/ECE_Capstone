@@ -7,7 +7,6 @@ struct PinLayout	{
 };
 
 void clear_data_pins(void);
-void delay(unsigned int k);
 void data_comm(void);
 void check_busy(void);
 void set_data_pins(unsigned char data);
