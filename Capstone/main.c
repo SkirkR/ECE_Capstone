@@ -15,7 +15,7 @@ void main(void){
     WDTCTL = WDTPW + WDTHOLD; //Stop watchdog timer
 	ConfigureClockModule();
     lcd_init();
-    send_string("321 TEST 123");
+    send_string("321TEST123");
     while(1){
     }
 }
