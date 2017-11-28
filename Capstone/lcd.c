@@ -6,6 +6,15 @@
 #define WRITE P2OUT &= ~BIT5 // define Write signal R/W = 0 for writing
 #define ENABLE_HIGH P1OUT |= BIT7 // define Enable high signal
 #define ENABLE_LOW P1OUT &= ~BIT7 // define Enable Low signal
+#define DB7_ACTIVE P1OUT |= BIT0 //Turn on DB7
+#define DB7_INACTIVE P1OUT &= ~BIT0 //Turn off DB7
+#define DB6_ACTIVE P1OUT |= BIT3 //Turn on DB6
+#define DB6_INACTIVE P1OUT &= ~BIT3 //Turn off DB6
+#define DB5_ACTIVE P1OUT |= BIT4 //Turn on DB5
+#define DB5_INACTIVE P1OUT &= ~BIT4 //Turn off DB5
+#define DB4_ACTIVE P2OUT |= BIT1 //Turn on DB4
+#define DB4_INACTIVE P2OUT &= ~BIT1 //Turn off DB4
+
 #define WAIT_50MS __delay_cycles(5000)
 #define WAIT_5MS __delay_cycles(500)
 //BIT3 is DB7, BIT0 is DB3
@@ -24,12 +33,14 @@ void check_busy(void){
     P1DIR |= BIT0; //Sets DB7 back to an output
 }
 void send_nibble(unsigned char nibble)    {
-    P1OUT &= ~BIT0 & ~BIT3 & ~BIT4; //Reset all data pins to 0
-    P2OUT &= ~BIT1;
-    if((nibble&0x01) != 0x00) P2OUT |= BIT1; //Mapping lowest to P2DIR,BIT1
-    if((nibble&0x02) != 0x00) P1OUT |= BIT4; //Mapping second lowest to P1DIR,BIT4
-    if((nibble&0x04) != 0x00) P1OUT |= BIT3; //Mapping second highest to P1DIR,BIT3
-    if((nibble&0x08) != 0x00) P1OUT |= BIT0; //Mapping highest to P1DIR,BIT0
+    DB7_INACTIVE;
+    DB6_INACTIVE;
+    DB5_INACTIVE;
+    DB4_INACTIVE;
+    if((nibble&0x01) != 0x00) DB4_ACTIVE; //Mapping lowest to P2DIR,BIT1
+    if((nibble&0x02) != 0x00) DB5_ACTIVE; //Mapping second lowest to P1DIR,BIT4
+    if((nibble&0x04) != 0x00) DB6_ACTIVE; //Mapping second highest to P1DIR,BIT3
+    if((nibble&0x08) != 0x00) DB7_ACTIVE; //Mapping highest to P1DIR,BIT0
     data_comm(); // give enable trigger
 }
 void set_data_pins(unsigned char data)  {
