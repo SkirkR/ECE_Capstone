@@ -1,4 +1,5 @@
 #include <msp430g2553.h>
+#include "floatConv.h"
 #include "lcd.h"
 #include "weigher.h"
 
@@ -18,8 +19,8 @@ void main(void){
         if(curWeight > 3)   {
             lcd_init();
             send_string("Current Weight: ");
-            char weightBuffer[64];
-            snprintf(weightBuffer, sizeof weightBuffer, "%f", curWeight);
+            char weightBuffer[20];
+            ftoa(curWeight, weightBuffer, 2); //This function is relatively slow
             send_string(weightBuffer);
             send_string(" pounds");
         }   else    {
