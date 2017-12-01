@@ -1,8 +1,6 @@
-
-// This file is for 4 bit mode LCD interfacing with msp430g2553 chip
-// 16x2 LCD is used
 #include <msp430g2553.h>
 #include "lcd.h"
+#include "weigher.h"
 
 void ConfigureClockModule(void){
     // Configure Digitally Controlled Oscillator (DCO) for 1 MHz using factory
@@ -14,8 +12,18 @@ void ConfigureClockModule(void){
 void main(void){
     WDTCTL = WDTPW + WDTHOLD; //Stop watchdog timer
 	ConfigureClockModule();
-    lcd_init();
-    send_string("321TEST123");
+    float curWeight;
     while(1){
+        curWeight = readWeight();
+        if(curWeight > 3)   {
+            lcd_init();
+            send_string("Current Weight: ");
+            char weightBuffer[64];
+            snprintf(weightBuffer, sizeof weightBuffer, "%f", curWeight);
+            send_string(weightBuffer);
+            send_string(" pounds");
+        }   else    {
+            lcd_init();
+        }
     }
 }
