@@ -1,5 +1,6 @@
 #include <msp430g2553.h>
 #include "lcd.h"
+//1.2 is contrast 0.7V is optimum
 #define DATAWRITE P2OUT |= BIT3 // define RS high
 #define CMDWRITE P2OUT &= ~BIT3 // define RS low
 #define READ P2OUT |= BIT5 // define Read signal R/W = 1 for reading

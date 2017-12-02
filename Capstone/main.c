@@ -16,7 +16,7 @@ void main(void){
     float curWeight;
     while(1){
         curWeight = readWeight();
-        if(curWeight > 3)   {
+        if(curWeight > 3.0f)   {
             lcd_init();
             send_string("Current Weight: ");
             char weightBuffer[20];
