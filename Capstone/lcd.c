@@ -83,3 +83,10 @@ void lcd_init(void){
     send_command(0x0F); //Display on, cursor blinking
     send_command(0x06); //Setup entry mode
 }
+
+void lcd_clear(void)    {
+    send_command(0x10); //Clear display
+    send_command(0x01); //Clear display
+    send_command(0x08); //Display on, cursor blinking
+    send_command(0x06); //Setup entry mode
+}

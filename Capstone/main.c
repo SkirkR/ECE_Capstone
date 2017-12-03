@@ -2,6 +2,7 @@
 #include "floatConv.h"
 #include "lcd.h"
 #include "weigher.h"
+#define WAIT_2S __delay_cycles(2000000)
 
 void ConfigureClockModule(void){
     // Configure Digitally Controlled Oscillator (DCO) for 1 MHz using factory
@@ -14,17 +15,20 @@ void main(void){
     WDTCTL = WDTPW + WDTHOLD; //Stop watchdog timer
 	ConfigureClockModule();
     float curWeight;
+    lcd_init();
+    init_sensor();
     while(1){
+        WAIT_2S;
         curWeight = readWeight();
-        if(curWeight > 3.0f)   {
+//        if(curWeight > 3.0f)   {
             lcd_init();
-            send_string("Current Weight: ");
+            send_string("Weight: ");
             char weightBuffer[20];
-            ftoa(curWeight, weightBuffer, 2); //This function is relatively slow
+            ftoa(curWeight, weightBuffer, 1);
             send_string(weightBuffer);
-            send_string(" pounds");
-        }   else    {
-            lcd_init();
-        }
+            send_string(" lbs");
+//        }   else    {
+//            lcd_init();
+//        }
     }
 }

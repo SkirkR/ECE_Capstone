@@ -10,6 +10,7 @@ GEN_OPTS__FLAG :=
 GEN_CMDS__FLAG := 
 
 ORDERED_OBJS += \
+"./floatConv.obj" \
 "./lcd.obj" \
 "./main.obj" \
 "./weigher.obj" \
@@ -155,8 +156,8 @@ Capstone.hex: $(EXE_OUTPUTS)
 # Other Targets
 clean:
 	-$(RM) $(BIN_OUTPUTS__QUOTED)$(EXE_OUTPUTS__QUOTED)
-	-$(RM) "lcd.obj" "main.obj" "weigher.obj" 
-	-$(RM) "lcd.d" "main.d" "weigher.d" 
+	-$(RM) "floatConv.obj" "lcd.obj" "main.obj" "weigher.obj" 
+	-$(RM) "floatConv.d" "lcd.d" "main.d" "weigher.d" 
 	-@echo 'Finished clean'
 	-@echo ' '
 

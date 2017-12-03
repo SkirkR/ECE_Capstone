@@ -16,6 +16,7 @@ void send_command(unsigned char cmd);
 void send_data(unsigned char data);
 void send_string(char* s);
 void lcd_init(void);
+void lcd_clear(void);
 
 
 #endif /* LCD_H_ */

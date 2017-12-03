@@ -55,8 +55,8 @@ void ftoa(float n, char *res, int afterpoint)
         // Get the value of fraction part upto given no.
         // of points after dot. The third parameter is needed
         // to handle cases like 233.007
-        fpart = fpart * pow(10, afterpoint);
-
+        fpart = fpart * 10;//pow(10, afterpoint);
+        float fpart2 = fpart;
         intToStr((int)fpart, res + i + 1, afterpoint);
     }
 }

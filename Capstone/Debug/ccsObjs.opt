@@ -1,1 +1,1 @@
-"./lcd.obj" "./main.obj" "./weigher.obj" "../lnk_msp430g2553.cmd" -llibc.a 
+"./floatConv.obj" "./lcd.obj" "./main.obj" "./weigher.obj" "../lnk_msp430g2553.cmd" -llibc.a 

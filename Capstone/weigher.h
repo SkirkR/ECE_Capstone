@@ -9,6 +9,7 @@
 #define WEIGHER_H_
 
 
+void init_sensor(void);
 float readWeight(void);
 
 
