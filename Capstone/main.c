@@ -20,15 +20,15 @@ void main(void){
     while(1){
         WAIT_FLICKER;
         curWeight = readWeight();
-//        if(curWeight > 3.0f)   {
-            lcd_init();
+        char weightBuffer[20];
+        ftoa(curWeight, weightBuffer, 1);
+        lcd_init();
+        if (weightBuffer[0] != '.') {
             send_string("Weight: ");
-            char weightBuffer[20];
-            ftoa(curWeight, weightBuffer, 1);
             send_string(weightBuffer);
-            send_string(" lbs    ");
-//        }   else    {
-//            lcd_init();
-//        }
+            send_string(" lbs    "); //Need spaces to get rid of cursor
+        }   else    {
+            send_string("Lift Handle!           ");
+        }
     }
 }
