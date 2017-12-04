@@ -73,6 +73,8 @@ void send_string(char* s){
 }
 void lcd_init(void){
     P1DIR |= BIT0 | BIT3 | BIT4 | BIT7; //These pins are outputs
+    P1DIR |= BIT2; //Contrast pin
+    P1OUT &= ~BIT2;
     P2DIR |= BIT1 | BIT3 | BIT5;
     WAIT_50MS;
     send_command(0x30); //Wakeup command
