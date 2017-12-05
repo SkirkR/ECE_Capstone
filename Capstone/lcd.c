@@ -7,15 +7,28 @@
 #define WRITE P2OUT &= ~BIT5 // define Write signal R/W = 0 for writing
 #define ENABLE_HIGH P1OUT |= BIT7 // define Enable high signal
 #define ENABLE_LOW P1OUT &= ~BIT7 // define Enable Low signal
-#define DB7_AS_INPUT P1DIR &= ~BIT0 //Sets DB7 as an input
-#define READ_DB7 (P1IN&BIT0) //Reads DB7
-#define DB7_AS_OUTPUT P1DIR |= BIT0 //Sets DB7 as an output
-#define DB7_ACTIVE P1OUT |= BIT0 //Turn on DB7
-#define DB7_INACTIVE P1OUT &= ~BIT0 //Turn off DB7
+
+//#define DB7_AS_INPUT P1DIR &= ~BIT0 //Sets DB7 as an input
+//#define READ_DB7 (P1IN&BIT0) //Reads DB7
+//#define DB7_AS_OUTPUT P1DIR |= BIT0 //Sets DB7 as an output
+//#define DB7_ACTIVE P1OUT |= BIT0 //Turn on DB7
+//#define DB7_INACTIVE P1OUT &= ~BIT0 //Turn off DB7
+
+#define DB7_AS_INPUT P1DIR &= ~BIT4 //Sets DB7 as an input
+#define READ_DB7 (P1IN&BIT4) //Reads DB7
+#define DB7_AS_OUTPUT P1DIR |= BIT4 //Sets DB7 as an output
+#define DB7_ACTIVE P1OUT |= BIT4 //Turn on DB7
+#define DB7_INACTIVE P1OUT &= ~BIT4 //Turn off DB7
+
 #define DB6_ACTIVE P1OUT |= BIT3 //Turn on DB6
 #define DB6_INACTIVE P1OUT &= ~BIT3 //Turn off DB6
-#define DB5_ACTIVE P1OUT |= BIT4 //Turn on DB5
-#define DB5_INACTIVE P1OUT &= ~BIT4 //Turn off DB5
+
+#define DB5_ACTIVE P1OUT |= BIT0 //Turn on DB5
+#define DB5_INACTIVE P1OUT &= ~BIT0 //Turn off DB5
+
+//#define DB5_ACTIVE P1OUT |= BIT4 //Turn on DB5
+//#define DB5_INACTIVE P1OUT &= ~BIT4 //Turn off DB5
+
 #define DB4_ACTIVE P2OUT |= BIT1 //Turn on DB4
 #define DB4_INACTIVE P2OUT &= ~BIT1 //Turn off DB4
 #define WAIT_50MS __delay_cycles(5000)
