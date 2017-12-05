@@ -28,7 +28,7 @@ void main(void){
             send_string(weightBuffer);
             send_string(" lbs    "); //Need spaces to get rid of cursor
         }   else    {
-            send_string("Lift Handle!           ");
+            send_string("  Lift Handle!           ");
         }
     }
 }
